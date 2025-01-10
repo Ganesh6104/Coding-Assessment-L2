@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Store - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="height: 40px;">
+                        <circle cx="30" cy="30" r="28" fill="#B88E2F" />
+                        <path d="M20 15 L40 15 L42 35 L18 35 Z" fill="white" />
+                        <path d="M22 35 L18 45 L42 45 L38 35" fill="white" />
+                        <path d="M20 45 L20 50 L24 50 L24 45 M36 45 L36 50 L40 50 L40 45" fill="white" />
+                        <text x="70" y="40" font-family="'Times New Roman', serif" font-size="32" fill="#B88E2F" font-weight="bold">
+                            LuxVibe
+                        </text>
+                    </svg>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Space</h1>
+                <p>Discover our collection of premium furniture</p>
+                <a href="shop.html" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Product -->
+    <section class="featured-product">
+        <div class="container">
+            <h2>Featured Product</h2>
+            <div class="product-card">
+                <img src="https://cdn.shopify.com/s/files/1/0883/2188/4479/files/Asgaardsofa3.png" alt="Asgaard Sofa">
+                <h3>Asgaard Sofa</h3>
+                <p class="price">₹250,000</p>
+                <button onclick="addToCart()" class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="service-features">
+                <div class="feature">
+                    <i class="fas fa-medal"></i>
+                    <h4>High Quality</h4>
+                    <p>crafted from top materials</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Warranty Protection</h4>
+                    <p>Over 2 years</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Free Shipping</h4>
+                    <p>Order over 150 $</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>24 / 7 Support</h4>
+                    <p>Dedicated support</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
