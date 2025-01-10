@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .success-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .success-icon {
+            color: #4CAF50;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }   
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: #f0f0f0;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .cart-empty i {
+            font-size: 48px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo">
+                    <div class="logo">
+                        <div class="logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="height: 40px;">
+                                <circle cx="30" cy="30" r="28" fill="#B88E2F" />
+                                <path d="M20 15 L40 15 L42 35 L18 35 Z" fill="white" />
+                                <path d="M22 35 L18 45 L42 45 L38 35" fill="white" />
+                                <path d="M20 45 L20 50 L24 50 L24 45 M36 45 L36 50 L40 50 L40 45" fill="white" />
+                                <text x="70" y="40" font-family="'Times New Roman', serif" font-size="32" fill="#B88E2F" font-weight="bold">
+                                    LuxVibe
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="main-content">
+        <div class="container">
+            <h1 class="page-title">Shopping Cart</h1>
+            <div class="cart-container">
+                <div class="cart-items">
+                    <!-- Empty cart message -->
+                    <div class="cart-empty" style="display: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added anything to your cart yet.</p>
+                        <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+                    </div>
+                </div>
+                <div class="cart-totals">
+                    <h3>Cart Summary</h3>
+                    <div class="totals-content">
+                        <div>
+                            <span>Subtotal</span>
+                            <span class="subtotal-amount">₹0.00</span>
+                        </div>
+                        <div>
+                            <span>Shipping</span>
+                            <span>Free</span>
+                        </div>
+                        <div>
+                            <strong>Total</strong>
+                            <strong class="total-amount">₹0.00</strong>
+                        </div>
+                    </div>
+                    <button class="checkout-btn">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal">
+        <div class="success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your purchase. Your order has been received.</p>
+            <button class="checkout-btn" onclick="window.location.href='shop.html'">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Remove Item Modal -->
+    <div class="modal" id="removeItemModal">
+        <div class="modal-content">
+            <h3>Remove Item</h3>
+            <p>Are you sure you want to remove this item from your cart?</p>
+            <div class="modal-buttons">
+                <button class="cancel-btn">Cancel</button>
+                <button class="confirm-btn">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+        <div class="cart-empty" style="display: none;">
+            <i class="fas fa-shopping-cart"></i>
+            <h2>Your cart is empty</h2>
+            <p>Looks like you haven't added anything to your cart yet.</p>
+            <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+        </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
